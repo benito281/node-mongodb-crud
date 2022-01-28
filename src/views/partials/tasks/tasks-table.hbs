@@ -1,0 +1,45 @@
+<div class="col-md-7">
+  {{#if tasks}}
+    <div class="card card-body">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each tasks}}
+            <tr>
+              <td>{{@index}}</td>
+              <td>{{title}}</td>
+              <td>{{description}}</td>
+              <td>
+                {{#if done}}
+                  <a href="/task/done/{{_id}}" class="btn btn-dark">Undone</a>
+                {{else}}
+                  <a href="/task/done/{{_id}}" class="btn btn-success">Done</a>
+
+                {{/if}}
+                <a href="/edit/{{_id}}" class="btn btn-warning">Edit</a>
+                <a href="/task/delete/{{_id}}" class="btn btn-danger">Delete</a>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+
+  {{else}}
+    <div class="h-100 d-flex align-items-center justify-content-center">
+      <div class="text-center text-white">
+        <i class="fas fa-list-ol fa-3x"></i>
+        <h1>No tasks</h1>
+      </div>
+    </div>
+
+  {{/if}}
+
+</div>
